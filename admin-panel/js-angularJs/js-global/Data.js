@@ -101,7 +101,7 @@ upload.controller('Load_Data_Controller', function($rootScope, $scope, $http, $l
                 // code chỉnh sửa theo yêu cầu dự án
 
 
-                var URL_API_Load = 'http://localhost/HQ-Tempalte-2026/Data/order.json';
+                var URL_API_Load = 'https://hqmultimedia.github.io/admin-demo/Data/order.json';
 
 
 
