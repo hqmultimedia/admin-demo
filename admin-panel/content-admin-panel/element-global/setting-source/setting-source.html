@@ -1,0 +1,91 @@
+<div class="row padding-15 round-medium">
+
+    <div class="col-12 col-lg-6 block-checkbox" ng-controller="checkBoxController">
+        <!-- 04-01 Khối checkbox và action -->
+        <form novalidate name="form_option" class="flex align-items-center">
+            <div class="flex align-items-center check-box-all">
+                <!-- check box chọn tất cả -->
+                <div class="form-check margin-r-15">
+                    <input class="form-check-input" type="checkbox" value="" ng-model="selectAllItemModel" ng-click="checkAllItems()" name="check_all" id="id_check_all">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Chọn tất cả <span>({{itemSelectedModel.length}} item)</span>
+                </label>
+
+                </div>
+                <!-- End check box chọn tất cả -->
+
+                <div class="flex">
+                    <!-- 04.1 End check box chọn tất cả -->
+
+                    <!-- selected option -->
+                    <select ng-model="optionCheckBox" name="option_act" class="card-highlight text-left margin-r-15 form-select form-control form-sm" style="width: auto;" required>
+                <option value="" disabled selected>-- Hành động --</option>
+                <option value="move-to-trash">Xoá dữ liệu</option>
+                <option value="hidden">Ẩn dữ liệu</option>
+                <option value="show">Hiển thị dữ liệu</option>
+                <option value="confirmation">Duyệt dữ liệu</option>
+                
+                <option value="considered">Từ chối duyệt</option>
+                
+            </select>
+                    <!-- End selected option -->
+                    <!-- Button -->
+                    <button style="width: 97px;" ng-disabled="form_option.$invalid" ng-model="option_function" ng-click="option_act(optionCheckBox,page_data)" class="btn btn-primary btn-sm"><span>Thực hiện</span></button>
+                    <!-- end button -->
+                </div>
+            </div>
+        </form>
+        <!-- 04-01 End khối checkbox và action -->
+    </div>
+    <div class="col-12 col-lg-6 block-setting-source">
+        <div class="card-inline father-box-input-setting ">
+            <!-- 01 -->
+            <div ng-if="data_get != '';" class="flex-layout-column margin-l-5 text-center"><label>Số tin hiển thị</label>
+                <input style="height: 38px;" type="number" string-to-number min="1" max="100" class="form-control card-highlight" value="{{optionsModelQuantity.PageSize}}" ng-model="optionsModelQuantity.PageSize">
+
+
+            </div>
+            <!-- khi dữ liệu rỗng ngăn chặn người dùng thao tác với thay đổi dữ liệu -->
+
+            <div ng-if="data_get == '';" class="flex-layout-column margin-l-5 text-center"><label>Số tin hiển thị</label>
+                <input type="number" disabled min="1" max="100" class="form-control card-highlight" value="{{optionsModelQuantity.PageSize}}" ng-model="optionsModelQuantity.PageSize">
+
+
+            </div>
+            <!-- 01 -->
+            <!-- 2 -->
+            <div class="flex-layout-column margin-l-5 text-center"><label>Sắp xếp</label>
+                <select name="" id="" class="form-control form-display card-highlight" style="width:116px;" ng-init="optionsModelDisplay.hienthi='-data_date'" ng-model="optionsModelDisplay.hienthi " ng-change="onChangePageSize()">
+                        
+                            <option value="-data_date">Mới nhất</option>
+                            <option value="data_date">Cũ nhất</option>
+                            <option value="data_name">A-Z</option>
+                            <option value="-data_name">Z-A</option>
+                            <option value="-data_status">Hiển thị -> Không hiển thị</option>
+                            <option value="data_status">Không hiển thị -> Hiển thị</option>
+                        
+                    </select>
+
+            </div>
+
+            <!-- end 2 -->
+            <!-- 2 -->
+            <div class="flex-layout-column margin-l-5 text-center"><label>Giao diện</label>
+                <select ng-if="data_get != '';" name="" id="" class="card-highlight form-control form-display" style="width:100px;" ng-model="optionsModelTheme.value_selected" ng-change="onChangePageSize()">
+                        <option value="1">Cột</option>
+                        <option value="2">Table</option>
+                    </select>
+                <!-- khi dữ liệu rỗng ngăn chặn người dùng thao tác với thay đổi dữ liệu -->
+                <select ng-if="data_get == '';" disabled name="" id="" class="form-control form-display" style="width:100px;" ng-model="optionsModelTheme.value_selected" ng-change="onChangePageSize()">
+                        <option value="1">Cột</option>
+                        <option value="2">Table</option>
+                    </select>
+
+            </div>
+            <!-- end 2 -->
+
+        </div>
+
+    </div>
+
+</div>
